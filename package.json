@@ -1,0 +1,19 @@
+{
+  "name": "postgrey",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexReshetnyak/node-postgrey.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexReshetnyak/node-postgrey/issues"
+  },
+  "homepage": "https://github.com/alexReshetnyak/node-postgrey#readme"
+}
