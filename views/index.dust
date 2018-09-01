@@ -1,5 +1,11 @@
 {>"layout" /}
 
 {<body}
-  THIS IS INDEX
+  {#testtable}
+    <div class="well">
+      <h4>
+        {name}<button class="btn btn-default pull-right">Views</button>
+      </h4>
+    </div>
+  {/testtable}
 {/body}

@@ -4,11 +4,19 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cons = require('consolidate');
 const dust = require('dustjs-helpers');
-const pg = require('pg');
+const { Pool, Client } = require('pg')
+
+const pool = new Pool({
+  user: 'alex',
+  host: 'localhost',
+  database: 'api-dev',
+  password: '123',
+  port: 5432,
+})
 
 const app = express();
 // * DB connect string
-const connect = 'postgres://alex:123@localhost/api-dev';
+const connectString = 'postgres://alex:123@localhost/api-dev';
 
 // Assign Dust engine to .dust files
 app.engine('dust', cons.dust);
@@ -25,8 +33,12 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 app.get('/', (req, res) => {
-  res.render('index');
-})
+  pool.query('SELECT * FROM testtable', (err, result) => {
+    // if(err) { res.status(500).send(err) };
+    res.render('index', { testtable: result && result.rows });
+    // pool.end();
+  });
+});
 
 // Server
 app.listen(3000, () => {
